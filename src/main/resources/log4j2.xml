@@ -1,0 +1,30 @@
+<configuration status="error">
+
+    <Appenders>
+        <!-- 콜솔 -->
+        <Console name="console" target="SYSTEM_OUT">
+            <PatternLayout pattern="%d{yyyy-MM-dd hh:mm:ss} %5p [%c] %m%n"/>
+        </Console>
+    </Appenders>
+    <appender name="FILE" class="ch.qos.logback.core.FileAppender">
+        <file>app.log</file>
+        <encoder>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n</pattern>
+            <charset>UTF-8</charset>
+        </encoder>
+    </appender>
+
+    <loggers>
+        <root level="info" additivity="true">
+            <AppenderRef ref="console"/>
+        </root>
+
+        <logger name="org.example" level="info" additivity="false">
+            <AppenderRef ref="console"/>
+        </logger>
+        <logger name="org.example.dao" level="debug" additivity="false">
+            <AppenderRef ref="console"/>
+        </logger>
+    </loggers>
+
+</configuration>
